@@ -1,4 +1,4 @@
-import {Controller, HttpCode, HttpStatus, Post, Query} from '@nestjs/common';
+import {Controller, Get, HttpCode, HttpStatus, Post, Query} from '@nestjs/common';
 import {WishListService} from "./wish.list.service";
 import {ApiCreatedResponse, ApiOperation, ApiTags} from '@nestjs/swagger';
 import {AddWishListDto} from './dto/add-wish-list.dto';
@@ -10,12 +10,17 @@ import {AddWishListDto} from './dto/add-wish-list.dto';
 })
 export class WishListController {
 
-  constructor(private readonly usersService: WishListService) {
+  constructor(private readonly wishListService: WishListService) {
   }
 
-  /**
-   *
-   */
+  @Get()
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: '요약', description: '상세' })
+  @ApiCreatedResponse({ description: 'test', type: String })
+  getWishListByUser(@Query() addWishListDto: AddWishListDto ) {
+    return 'test';
+  }
+
   @Post()
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: '요약', description: '상세' })
