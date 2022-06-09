@@ -1,14 +1,11 @@
 package com.example.api.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
-@AllArgsConstructor
+@AllArgsConstructor(staticName = "of")
 @NoArgsConstructor
 @Getter
 @Setter
@@ -21,7 +18,7 @@ public class ProductListAndarResponseBody {
     @AllArgsConstructor
     @NoArgsConstructor
     @Getter
-    @Setter
+    @Builder
     public static class Item {
 
         @JsonProperty("product_no")
