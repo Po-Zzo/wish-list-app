@@ -29,7 +29,7 @@ class ProductRestAndarImplTest  {
     @Test
     @DisplayName("ProductDetail rest 요청 성공")
     void getProductDetail() {
-        productRestAndar.getProductDetail(AndarProductId.of(6527));
-        productRestAndar.getProductDetail(AndarProductId.of(5752));
+        productRestAndar.getProductDetail(AndarProductId.of("6527"));
+        productRestAndar.getProductDetail(AndarProductId.of("5752"));
     }
 }

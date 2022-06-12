@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor(staticName = "of")
 @Builder
-public class ProductImpl {
+public class ProductImpl implements Product {
 
   private final ProductId productId;
   private final Urls urls;
@@ -17,5 +17,9 @@ public class ProductImpl {
   private final DiscountRate discountRate;
   private final Price discountPrice;
   private final RelatedProducts relatedProducts;
+
+  public ProductId getId() {
+    return productId;
+  }
 
 }

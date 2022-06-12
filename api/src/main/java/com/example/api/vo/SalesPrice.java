@@ -1,8 +1,6 @@
 package com.example.api.vo;
 
 
-import static java.util.Objects.isNull;
-
 public class SalesPrice extends Price {
 
   private SalesPrice(String price) {
