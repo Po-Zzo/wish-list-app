@@ -2,9 +2,12 @@ package com.example.api.dto;
 
 import static java.util.Objects.isNull;
 
+import com.example.api.vo.AndarProductId;
 import com.example.api.vo.DateVO;
 import com.example.api.vo.Price;
+import com.example.api.vo.ProductId;
 import com.example.api.vo.SalesPrice;
+import com.example.api.vo.Url;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.text.ParseException;
 import lombok.Getter;
@@ -23,7 +26,7 @@ public class ProductDetailAndarResponseBody {
   public static class ProductDetail {
 
     @JsonProperty("product_no")
-    private String productId;
+    private ProductId productId;
 
     @JsonProperty("discount_price")
     private SalesPrice salesPrice;
@@ -38,6 +41,10 @@ public class ProductDetailAndarResponseBody {
 
     @JsonProperty("small_image")
     private String mainImage;
+
+    public void setProductId(int productId) {
+      this.productId = AndarProductId.of(productId);
+    }
 
     public void setSalesPrice(String salesPrice) {
       this.salesPrice = SalesPrice.of(salesPrice);
@@ -54,6 +61,10 @@ public class ProductDetailAndarResponseBody {
       if (isNull(this.salesPrice) || !this.salesPrice.hasPrice()) {
         this.salesPrice = SalesPrice.of(this.price);
       }
+    }
+
+    public Url getUrl() {
+      return productId.toUrl();
     }
 
   }
