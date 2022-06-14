@@ -35,20 +35,4 @@ public class VariablePrices {
             VariablePrices::of));
   }
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    VariablePrices that = (VariablePrices) o;
-    return Objects.equals(variablePrices, that.variablePrices);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(variablePrices);
-  }
 }

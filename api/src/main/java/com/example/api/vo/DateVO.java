@@ -10,7 +10,6 @@ import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor(staticName = "of")
@@ -58,12 +57,11 @@ public class DateVO implements Comparable<DateVO> {
       return false;
     }
     DateVO dateVO = (DateVO) o;
-    return Objects.equals(localDateTime, dateVO.localDateTime) && Objects.equals(
-        localDate, dateVO.localDate);
+    return Objects.equals(localDateTime, dateVO.localDateTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(localDateTime, localDate);
+    return Objects.hash(localDateTime);
   }
 }
