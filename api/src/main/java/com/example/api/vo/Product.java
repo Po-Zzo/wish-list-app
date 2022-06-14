@@ -10,15 +10,18 @@ import lombok.RequiredArgsConstructor;
 public class Product {
 
   private final ProductId productId;
+  private final ProductName productName;
   private final Urls urls;
   private final Image mainImage;
   private final Price price;
-  private final VariablePrice variablePrice;
+  private final VariablePrices variablePrices;
   private final SalesPrice salesPrice;
-  private final VariableSalesPrice variableSalesPrice;
+  private final VariableSalesPrices variableSalesPrices;
   private final DiscountRate discountRate;
   private final Price discountPrice;
   private final RelatedProducts relatedProducts;
+  private final PromotionPeriod promotionPeriod;
+
 
   public ProductId getId() {
     return productId;
@@ -33,18 +36,20 @@ public class Product {
     }
   }
 
-  public static Product of(ProductDetailAndarResponseBody productDetailAndarResponseBody) {
+  public static Product of(ProductDetailAndarResponseBody productDetailAndarResponseBody, DateVO dateVO) {
     ProductDetail productDetail = productDetailAndarResponseBody.getProductDetail();
     return Product.builder()
         .productId(productDetail.getProductId())
+        .productName(productDetail.getProductName())
         .urls(productDetail.getProductId())
-        .mainImage()
-        .price()
-        .variablePrice()
-        .salesPrice()
-        .variableSalesPrice()
-        .discountPrice()
-        .relatedProducts()
+        .mainImage(productDetail.getMainImage())
+        .price(productDetail.getPrice())
+        .variablePrices(VariablePrices.of(RegisteredPrice.of(productDetail.getSalesPrice(), dateVO)))
+        .salesPrice(productDetail.getSalesPrice())
+        .variableSalesPrices(VariableSalesPrices.of(RegisteredPrice.of(productDetail.getSalesPrice(), dateVO)))
+//        .discountPrice()
+//        .relatedProducts()
+        .promotionPeriod(productDetail.getPromotionPeriod())
         .build();
   }
 

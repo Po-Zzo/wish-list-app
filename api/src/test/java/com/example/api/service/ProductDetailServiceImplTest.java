@@ -34,8 +34,8 @@ class ProductDetailServiceImplTest {
     Item item = productRestAndar.getProductList().getPList().get(0);
     ProductDetailAndarResponseBody productDetail = productRestAndar.getProductDetail(
         item.getProductId());
-    productDao.updateProductDetail();
-
-    productDetailService.updateProductDetail();
+//    productDao.updateProductDetail();
+//
+//    productDetailService.updateProductDetail();
   }
 }
