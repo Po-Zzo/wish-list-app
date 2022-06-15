@@ -1,8 +1,10 @@
 package com.example.api.vo;
 
 import java.util.Objects;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+@Getter
 @RequiredArgsConstructor(staticName = "of")
 public class RegisteredPrice {
 

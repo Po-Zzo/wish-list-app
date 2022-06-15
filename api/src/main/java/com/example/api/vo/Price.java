@@ -55,4 +55,5 @@ public class Price {
   public int hashCode() {
     return Objects.hash(price);
   }
+
 }
