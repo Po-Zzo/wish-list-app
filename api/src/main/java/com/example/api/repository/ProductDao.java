@@ -1,16 +1,16 @@
 package com.example.api.repository;
 
-import com.example.api.dto.ProductListAndarResponseBody;
-import com.example.api.vo.Product;
+import com.example.api.vo.ProductImpl;
 import com.example.api.vo.ProductId;
+import com.example.api.vo.ProductIdToProduct;
 
 public interface ProductDao {
 
-    void saveProductList(ProductListAndarResponseBody productListAndarResponseBody);
+    void saveProducts(ProductIdToProduct productIdToProduct);
 
-    ProductListAndarResponseBody getProductList();
+    ProductIdToProduct getProductList();
 
-    void updateProductDetail(Product product);
+    void updateProductDetail(ProductImpl product);
 
-    Product getProduct(ProductId productId);
+    ProductImpl getProduct(ProductId productId);
 }

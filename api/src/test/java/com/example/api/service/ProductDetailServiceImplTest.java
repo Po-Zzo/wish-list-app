@@ -4,25 +4,20 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import com.example.api.dto.ProductDetailAndarResponseBody;
 import com.example.api.dto.ProductListAndarResponseBody.Item;
-import com.example.api.repository.ProductDao;
+import com.example.api.rest.ProductRest;
 import com.example.api.rest.ProductRestAndarImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest(classes = {
-    ProductDetailService.class,
-    ProductDao.class
-})
+@SpringBootTest
 class ProductDetailServiceImplTest {
 
   @Autowired
-  private ProductDetailService productDetailService;
-  @Autowired
-  private ProductDao productDao;
+  private ProductDetailServiceImpl productDetailService;
 
   @Autowired
-  private ProductRestAndarImpl productRestAndar;
+  private ProductRest productRestAndar;
 
   @Test
   void updateProductDetailAll() {
@@ -31,9 +26,9 @@ class ProductDetailServiceImplTest {
 
   @Test
   void updateProductDetail() {
-    Item item = productRestAndar.getProductList().getPList().get(0);
-    ProductDetailAndarResponseBody productDetail = productRestAndar.getProductDetail(
-        item.getProductId());
+//    Item item = productRestAndar.getProductList().getPList().get(0);
+//    ProductDetailAndarResponseBody productDetail = productRestAndar.getProductDetail(
+//        item.getProductId());
 //    productDao.updateProductDetail();
 //
 //    productDetailService.updateProductDetail();

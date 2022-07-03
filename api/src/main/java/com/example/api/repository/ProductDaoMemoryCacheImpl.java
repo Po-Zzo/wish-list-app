@@ -1,8 +1,10 @@
 package com.example.api.repository;
 
-import com.example.api.dto.ProductListAndarResponseBody;
-import com.example.api.vo.Product;
+import static java.util.Objects.isNull;
+
+import com.example.api.vo.ProductImpl;
 import com.example.api.vo.ProductId;
+import com.example.api.vo.ProductIdToProduct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
@@ -19,23 +21,30 @@ public class ProductDaoMemoryCacheImpl implements ProductDao {
     private final String productListKey = "productList";
 
     @Override
-    public void saveProductList(ProductListAndarResponseBody productListAndarResponseBody) {
-        MEMORY.put(productListKey, productListAndarResponseBody);
+    public void saveProducts(ProductIdToProduct productIdToProduct) {
+        MEMORY.put(productListKey, productIdToProduct);
     }
 
     @Override
-    public ProductListAndarResponseBody getProductList() {
-        return (ProductListAndarResponseBody) MEMORY.get(productListKey);
+    public ProductIdToProduct getProductList() {
+        Object productIdToItem = MEMORY.get(productListKey);
+        if (!isNull(productIdToItem)) {
+            return (ProductIdToProduct) productIdToItem;
+        }
+
+        ProductIdToProduct result = ProductIdToProduct.of();
+        MEMORY.put(productListKey, result);
+        return result;
     }
 
     @Override
-    public void updateProductDetail(Product product) {
+    public void updateProductDetail(ProductImpl product) {
         MEMORY.put(product.getId(), product);
     }
 
     @Override
-    public Product getProduct(ProductId productId) {
-        return (Product) MEMORY.get(productId);
+    public ProductImpl getProduct(ProductId productId) {
+        return (ProductImpl) MEMORY.get(productId);
     }
 
 

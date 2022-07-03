@@ -1,14 +1,15 @@
 package com.example.api.rest;
 
-import com.example.api.dto.ProductDetailAndarResponseBody;
-import com.example.api.dto.ProductListAndarResponseBody;
+import com.example.api.vo.DateVO;
+import com.example.api.vo.Product;
 import com.example.api.vo.ProductId;
+import com.example.api.vo.ProductIdToProduct;
 
 public interface ProductRest {
 
-  ProductListAndarResponseBody getProductList();
+  ProductIdToProduct getProductIdToProduct();
 
-  ProductDetailAndarResponseBody getProductDetail(ProductId productId);
+  Product getProductDetail(ProductId productId, DateVO dateVO);
 
 
 }
