@@ -1,4 +1,4 @@
-package com.example.api.dto;
+package com.example.api.andar;
 
 import static java.util.Objects.isNull;
 
@@ -24,7 +24,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class ProductDetailAndarResponseBody {
+class ProductDetailAndarResponseBody {
 
   @JsonProperty("productsdetail")
   private ProductDetail productDetail;
@@ -33,13 +33,13 @@ public class ProductDetailAndarResponseBody {
    * 사이트 내에서 삭제되어 더이상 정보를 알 수 없는 제품인지 확인
    * @return
    */
-  public boolean isDeleted() {
+  boolean isDeleted() {
     return isNull(productDetail);
   }
 
   @Getter
   @NoArgsConstructor
-  public static class ProductDetail {
+  static class ProductDetail {
 
     @JsonProperty("product_no")
     private ProductId productId;
@@ -58,11 +58,11 @@ public class ProductDetailAndarResponseBody {
     @JsonProperty("small_image")
     private Image mainImage;
 
-    public void setProductId(int productId) {
+    void setProductId(int productId) {
       this.productId = AndarProductId.of(productId);
     }
 
-    public void setSalesPrice(String salesPrice) {
+    void setSalesPrice(String salesPrice) {
       this.salesPrice = SalesPrice.of(salesPrice);
 
       if (!this.salesPrice.hasPrice()) {
@@ -71,7 +71,7 @@ public class ProductDetailAndarResponseBody {
 
     }
 
-    public void setPrice(String price) {
+    void setPrice(String price) {
       this.price = Price.of(price);
 
       if (isNull(this.salesPrice) || !this.salesPrice.hasPrice()) {
@@ -79,21 +79,21 @@ public class ProductDetailAndarResponseBody {
       }
     }
 
-    public void setMainImage(String imageUrl) {
+    void setMainImage(String imageUrl) {
       this.mainImage = ImageImpl.of(imageUrl);
     }
 
-    public void setProductName(String productName) {
+    void setProductName(String productName) {
       this.productName = ProductNameImpl.of(productName);
     }
 
-    public Url getUrl() {
+    Url getUrl() {
       return productId.toUrl();
     }
 
   }
 
-  public Product toProduct(DateVO dateVO) {
+  Product toProduct(DateVO dateVO) {
 
     return ProductImpl.builder()
         .productId(productDetail.getProductId())

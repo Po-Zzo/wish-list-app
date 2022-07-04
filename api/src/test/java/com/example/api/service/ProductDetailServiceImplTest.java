@@ -1,11 +1,6 @@
 package com.example.api.service;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import com.example.api.dto.ProductDetailAndarResponseBody;
-import com.example.api.dto.ProductListAndarResponseBody.Item;
 import com.example.api.rest.ProductRest;
-import com.example.api.rest.ProductRestAndarImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

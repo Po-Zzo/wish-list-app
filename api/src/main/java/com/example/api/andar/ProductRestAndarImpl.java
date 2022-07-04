@@ -1,10 +1,11 @@
-package com.example.api.rest;
+package com.example.api.andar;
 
 import static org.springframework.http.HttpMethod.GET;
 
-import com.example.api.dto.ProductDetailAndarResponseBody;
-import com.example.api.dto.ProductListAndarRequestBody;
-import com.example.api.dto.ProductListAndarResponseBody;
+import com.example.api.andar.ProductDetailAndarResponseBody;
+import com.example.api.andar.ProductListAndarRequestBody;
+import com.example.api.andar.ProductListAndarResponseBody;
+import com.example.api.rest.ProductRest;
 import com.example.api.vo.DateVO;
 import com.example.api.vo.Product;
 import com.example.api.vo.ProductId;

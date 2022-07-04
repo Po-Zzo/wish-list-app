@@ -1,7 +1,5 @@
 package com.example.api.vo;
 
-import com.example.api.dto.ProductDetailAndarResponseBody;
-import com.example.api.dto.ProductDetailAndarResponseBody.ProductDetail;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 
@@ -36,21 +34,6 @@ public class ProductImpl implements Product {
     }
   }
 
-  public static ProductImpl of(ProductDetailAndarResponseBody productDetailAndarResponseBody, DateVO dateVO) {
-    ProductDetail productDetail = productDetailAndarResponseBody.getProductDetail();
-    return ProductImpl.builder()
-        .productId(productDetail.getProductId())
-        .productName(productDetail.getProductName())
-//        .urls(productDetail.getProductId())
-        .mainImage(productDetail.getMainImage())
-        .price(productDetail.getPrice())
-        .variablePrices(VariablePrices.of(RegisteredPrice.of(productDetail.getSalesPrice(), dateVO)))
-        .salesPrice(productDetail.getSalesPrice())
-        .variableSalesPrices(VariableSalesPrices.of(RegisteredPrice.of(productDetail.getSalesPrice(), dateVO)))
-//        .discountPrice()
-//        .relatedProducts()
-        .promotionPeriod(productDetail.getPromotionPeriod())
-        .build();
-  }
+
 
 }

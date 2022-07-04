@@ -1,11 +1,9 @@
 package com.example.api.service;
 
-import com.example.api.dto.ProductDetailAndarResponseBody;
 import com.example.api.repository.ProductDao;
 import com.example.api.rest.ProductRest;
 import com.example.api.vo.DateVO;
 import com.example.api.vo.Product;
-import com.example.api.vo.ProductIdToProduct;
 import com.example.api.vo.ProductImpl;
 import com.example.api.vo.ProductId;
 import lombok.RequiredArgsConstructor;

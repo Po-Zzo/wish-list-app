@@ -1,15 +1,15 @@
-package com.example.api.dto;
+package com.example.api.andar;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class ProductListAndarRequestBody {
+class ProductListAndarRequestBody {
 
     private final String mall_id = "andar01";
 
-    public static ProductListAndarRequestBody of() {
+    static ProductListAndarRequestBody of() {
         return new ProductListAndarRequestBody();
     }
 }

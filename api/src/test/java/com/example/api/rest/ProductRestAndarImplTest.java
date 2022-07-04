@@ -1,5 +1,6 @@
 package com.example.api.rest;
 
+import com.example.api.andar.ProductRestAndarImpl;
 import com.example.api.vo.AndarProductId;
 import com.example.api.vo.DateVO;
 import org.junit.jupiter.api.DisplayName;
@@ -8,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.client.RestClientTest;
 import org.springframework.test.annotation.DirtiesContext;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @DirtiesContext
 @RestClientTest(value = ProductRestAndarImpl.class,
