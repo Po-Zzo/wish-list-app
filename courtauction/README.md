@@ -9,11 +9,6 @@ api 도 막히게 되었기 때문에, 전체 카테고리 목록 api 를 가져
 
 ### 모든 부동산 정보를 크롤한다.
 - POST https://www.courtauction.go.kr/RetrieveRealEstMulDetailList.laf
-- Response Header 
-  - Content-Type: text/html; charset=EUC-KR
-    
-- Request Header 
-  - Content-Type: application/x-www-form-urlencoded
 
 #### request header
 - Host 와 User-Agent 를 넣어줘야 합니다. 그렇지 않으면 400 에러가 납니다. 
