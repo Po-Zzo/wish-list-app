@@ -1,20 +1,25 @@
 package com.courtauction.rest;
 
+import com.courtauction.pojo.CourtClass;
 import lombok.RequiredArgsConstructor;
 import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.nodes.TextNode;
 import org.jsoup.select.Elements;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.List;
 
 @Component
 @RequiredArgsConstructor
 public class CourtAuctionRest {
 
-    private static final String LIST_API = "https://www.courtauction.go.kr/RetrieveRealEstMulDetailList.laf";
+    private static final String BASE_URI = "https://www.courtauction.go.kr/";
+    private static final String LIST_API = BASE_URI + "RetrieveRealEstMulDetailList.laf";
+    private static final String OPTION_API = BASE_URI + "InitMulSrch.laf";
 
     private final RestTemplate restTemplate;
 
@@ -29,7 +34,26 @@ public class CourtAuctionRest {
                 new HttpEntity<>(headers),
                 String.class).getBody();
 
-        Elements table = Jsoup.parse(body)
-                .getElementsByClass("Ltbl_list");
+        Elements trEl = Jsoup.parse(body)
+                .getElementsByClass("Ltbl_list")
+                .select("tr");
+
+        List<Element> elements = trEl.subList(1, trEl.size());
+    }
+
+    public CourtClass fetchCourtClass() {
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Host", "ANDAR_API_APP_KEY");
+        headers.add("User-Agent", "ANDAR_API_APP_KEY");
+
+        String uri = OPTION_API + "?_NEXT_SRNID=PNO102001";
+        String body = restTemplate.postForEntity(uri,
+                new HttpEntity<>(headers),
+                String.class).getBody();
+
+        return CourtClass.of(Jsoup.parse(body)
+                .getElementById("idJiwonNm")
+                .select("option")
+                .eachText());
     }
 }

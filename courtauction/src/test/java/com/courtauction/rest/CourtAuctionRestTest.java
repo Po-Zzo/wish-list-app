@@ -16,4 +16,9 @@ class CourtAuctionRestTest {
     void fetchList() {
         courtAuctionRest.fetchList();
     }
+
+    @Test
+    void fetchCourtClass() {
+        courtAuctionRest.fetchCourtClass();
+    }
 }
