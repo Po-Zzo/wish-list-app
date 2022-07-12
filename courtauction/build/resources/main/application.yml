@@ -1,0 +1,7 @@
+spring:
+  profiles: local
+
+datasource:
+  mongo:
+    database: courtaution
+    connection-string: mongodb://localhost:26017/courtaution
