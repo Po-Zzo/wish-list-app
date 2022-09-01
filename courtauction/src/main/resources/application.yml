@@ -1,7 +1,8 @@
 spring:
   profiles: local
-
-datasource:
-  mongo:
-    database: courtaution
-    connection-string: mongodb://localhost:26017/courtaution
+  data:
+    mongodb:
+      host: localhost
+      port: 26017
+      database: geometry
+      connection-string: mongodb://localhost:26017/geometry

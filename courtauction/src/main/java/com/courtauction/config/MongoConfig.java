@@ -14,10 +14,10 @@ import java.util.Collections;
 @Configuration
 public class MongoConfig extends AbstractMongoClientConfiguration {
 
-    @Value("${datasource.mongo.database}")
+    @Value("${spring.data.mongodb.database}")
     private String MONGO_DATABASE_NAME;
 
-    @Value("${datasource.mongo.connection-string}")
+    @Value("${spring.data.mongodb.connection-string}")
     private String MONGO_CONNECTION_STRING;
 
     @Override
