@@ -5,6 +5,6 @@ spring:
   data:
     mongodb:
       host: localhost
-      port: 26017
-      database: geometry
-      connection-string: mongodb://localhost:26017/geometry
+      port: 27017
+      database: courtaution
+      connection-string: mongodb://localhost:27017/courtaution
