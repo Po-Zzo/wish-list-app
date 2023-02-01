@@ -1,14 +1,17 @@
 package com.courtauction.pojo;
 
+import com.courtauction.rest.CourtAuctionRest;
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 법원 리스트 객체
+ *
+ * 싱글턴
  * 예시
  *   0 = "제천지원"
  *   1 = "상주지원"
@@ -72,12 +75,32 @@ import java.util.stream.Collectors;
  *   59 = "해남지원"
  *   60 = "속초지원"
  */
-@RequiredArgsConstructor(staticName = "of")
-public class CourtClass {
+@RequiredArgsConstructor(
+  access = AccessLevel.PRIVATE
+)
+@Slf4j
+public class Courts {
 
-    private final Set<String> courtClass;
+    private static final Courts instance = new Courts();
 
-    public static CourtClass of(List<String> courtClass) {
-        return CourtClass.of(new HashSet<>(courtClass));
+    private static final Set<String> courtClass = new HashSet<>();
+
+    public static Courts getInstance() {
+        if (courtClass.isEmpty()) {
+            log.error("CourtClass instance is null. initialize CourtClass");
+            throw new NullPointerException();
+        }
+
+        return instance;
+    }
+
+    public static Courts init(CourtAuctionRest courtAuctionRest) {
+        fetch(courtAuctionRest);
+        save
+        return Courts.instance;
+    }
+
+    private static void fetch(CourtAuctionRest courtAuctionRest) {
+        courtClass.addAll(courtAuctionRest.fetchCourts());
     }
 }

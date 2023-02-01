@@ -2,8 +2,9 @@ package com.courtauction.rest;
 
 import com.courtauction.consts.CourtAuctionPayLoadConsts;
 import com.courtauction.consts.CourtAuctionQueryConsts;
-import com.courtauction.pojo.CourtClass;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import lombok.RequiredArgsConstructor;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
@@ -40,12 +41,12 @@ public class CourtAuctionRestImpl implements CourtAuctionRest {
     }
 
     @Override
-    public CourtClass fetchCourtClass() {
+    public Set<String> fetchCourts() {
         String body = restTemplate.postForEntity(COURT_CLASS_API,
                 new HttpEntity<>(CourtAuctionRest.getHttpHeaders()),
                 String.class).getBody();
 
-        return CourtClass.of(Jsoup.parse(body)
+        return new HashSet<>(Jsoup.parse(body)
                 .getElementById(CourtAuctionPayLoadConsts.COURT_CLASS)
                 .select(CourtAuctionQueryConsts.OPTION)
                 .eachText());

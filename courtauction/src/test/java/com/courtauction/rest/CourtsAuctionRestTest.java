@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-class CourtAuctionRestTest {
+class CourtsAuctionRestTest {
 
     @Autowired
     private CourtAuctionRest courtAuctionRest;
@@ -18,7 +18,7 @@ class CourtAuctionRestTest {
     }
 
     @Test
-    void fetchCourtClass() {
-        courtAuctionRest.fetchCourtClass();
+    void fetchCourts() {
+        courtAuctionRest.fetchCourts();
     }
 }

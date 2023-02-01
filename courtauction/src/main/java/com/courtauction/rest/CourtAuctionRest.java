@@ -1,6 +1,7 @@
 package com.courtauction.rest;
 
-import com.courtauction.pojo.CourtClass;
+import java.util.List;
+import java.util.Set;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
 
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Component;
 public interface CourtAuctionRest {
 
     void fetchList();
-    CourtClass fetchCourtClass();
+    Set<String> fetchCourts();
 
     static HttpHeaders getHttpHeaders() {
         HttpHeaders headers = new HttpHeaders();

@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 
 @SpringBootApplication
 @ConfigurationPropertiesScan("com.courtauction")
-@EnableMongoRepositories(basePackages = "com.courtauction.repository")
+@EnableMongoRepositories(basePackages = "com.courtauction.dao")
 public class CourtAuctionApplication {
 
     public static void main(String[] args) {
